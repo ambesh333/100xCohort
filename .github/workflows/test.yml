@@ -13,15 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Print directory contents
+        run: ls -R
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: simple-express-vitest
+        working-directory: Testing/simple-express-vitest
         run: npm install && npx prisma generate
 
       - name: Run tests
-        working-directory: simple-express-vitest
+        working-directory: Testing/simple-express-vitest
         run: npm run test
